@@ -15,6 +15,7 @@ function Admin() {
     name: '', price: '', image: '', description: '', category: '', stock: ''
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!user || !user.isAdmin) {
       navigate('/');
@@ -23,7 +24,6 @@ function Admin() {
     fetchProducts();
     fetchOrders();
   }, [user, navigate]);
-
   const fetchProducts = async () => {
     const res = await fetch('https://myshop-backend-x6fu.onrender.com/api/admin/products', {
       headers: { Authorization: `Bearer ${user.token}` },
